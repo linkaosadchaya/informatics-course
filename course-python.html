@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы программирования на Python - Обучение информатике с Ангелиной</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            background-image: linear-gradient(to bottom, #f9f0ff 0%, #f5f7fa 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header стили */
+        header {
+            background: linear-gradient(135deg, #ff66b2 0%, #ff99cc 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .logo-img:hover {
+            transform: rotate(10deg);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            color: #ffe6f2;
+            margin-top: 3px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a:hover {
+            color: #ff66b2;
+            background-color: white;
+            transform: translateY(-2px);
+        }
+
+        nav ul li a i {
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff66b2;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 102, 178, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #ff3385;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 102, 178, 0.4);
+        }
+
+        /* Hello Kitty логотип */
+        .hello-kitty {
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+
+        .hello-kitty-head {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .hello-kitty-ear {
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .hello-kitty-ear.left {
+            top: 0;
+            left: 5px;
+        }
+
+        .hello-kitty-ear.right {
+            top: 0;
+            right: 5px;
+        }
+
+        .hello-kitty-eye {
+            width: 8px;
+            height: 8px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+        }
+
+        .hello-kitty-eye.left {
+            left: 10px;
+        }
+
+        .hello-kitty-eye.right {
+            right: 10px;
+        }
+
+        .hello-kitty-nose {
+            width: 6px;
+            height: 6px;
+            background-color: #ff66b2;
+            border-radius: 50%;
+            position: absolute;
+            top: 25px;
+            left: 22px;
+        }
+
+        .hello-kitty-whisker {
+            width: 10px;
+            height: 2px;
+            background-color: black;
+            position: absolute;
+            top: 23px;
+        }
+
+        .hello-kitty-whisker.left1 {
+            left: 5px;
+            transform: rotate(-20deg);
+        }
+
+        .hello-kitty-whisker.left2 {
+            left: 5px;
+            transform: rotate(20deg);
+            top: 27px;
+        }
+
+        .hello-kitty-whisker.right1 {
+            right: 5px;
+            transform: rotate(20deg);
+        }
+
+        .hello-kitty-whisker.right2 {
+            right: 5px;
+            transform: rotate(-20deg);
+            top: 27px;
+        }
+
+        .hello-kitty-bow {
+            width: 20px;
+            height: 15px;
+            background-color: #ff66b2;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: rotate(30deg);
+        }
+
+        .hello-kitty-computer {
+            width: 30px;
+            height: 20px;
+            background-color: #333;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -5px;
+            left: 10px;
+        }
+
+        .hello-kitty-screen {
+            width: 20px;
+            height: 12px;
+            background-color: #4cc9f0;
+            border-radius: 3px;
+            position: absolute;
+            top: 4px;
+            left: 5px;
+        }
+
+        /* Страница курса */
+        .course-header {
+            background: linear-gradient(135deg, #ff66b2 0%, #ff99cc 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
+        }
+
+        .course-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .course-header .course-tag {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .course-content {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(255, 102, 178, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .course-content h2 {
+            color: #ff66b2;
+            margin: 30px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffe6f2;
+        }
+
+        .course-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .course-content ul, .course-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .course-content li {
+            margin-bottom: 10px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #ffe6f2;
+            color: #ff66b2;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            background-color: #ff66b2;
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        /* Пример кода */
+        .code-example {
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border: 2px solid #ff99cc;
+        }
+
+        .code-example h3 {
+            color: #ff99cc;
+            margin-bottom: 15px;
+        }
+
+        pre {
+            color: #d4d4d4;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+        }
+
+        .code-keyword {
+            color: #569cd6;
+        }
+
+        .code-function {
+            color: #dcdcaa;
+        }
+
+        .code-string {
+            color: #ce9178;
+        }
+
+        .code-comment {
+            color: #6a9955;
+        }
+
+        .code-number {
+            color: #b5cea8;
+        }
+
+        /* Инфо-блоки */
+        .info-block {
+            background-color: #ffe6f2;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #ff66b2;
+        }
+
+        .info-block h4 {
+            color: #ff3385;
+            margin-bottom: 10px;
+        }
+
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, #ff66b2 0%, #ff99cc 100%);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ffe6f2;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-column ul li a i {
+            font-size: 0.8rem;
+        }
+
+        .creator-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: #ffe6f2;
+        }
+
+        .creator-info strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffe6f2;
+            font-size: 0.9rem;
+        }
+
+        /* Индикатор текущей страницы */
+        .current-page {
+            background-color: white !important;
+            color: #ff66b2 !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 8px;
+            }
+
+            .course-header h1 {
+                font-size: 2rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .course-header {
+                padding: 40px 0;
+            }
+
+            .course-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .course-content {
+                padding: 25px;
+            }
+
+            .logo {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+
+            nav ul li a {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Python стиль */
+        .python-logo {
+            display: inline-block;
+            background: linear-gradient(135deg, #3776ab 0%, #ffd343 100%);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 15px;">
+                    <div class="logo-img">
+                        <!-- Hello Kitty логотип -->
+                        <div class="hello-kitty">
+                            <div class="hello-kitty-ear left"></div>
+                            <div class="hello-kitty-ear right"></div>
+                            <div class="hello-kitty-head"></div>
+                            <div class="hello-kitty-eye left"></div>
+                            <div class="hello-kitty-eye right"></div>
+                            <div class="hello-kitty-nose"></div>
+                            <div class="hello-kitty-whisker left1"></div>
+                            <div class="hello-kitty-whisker left2"></div>
+                            <div class="hello-kitty-whisker right1"></div>
+                            <div class="hello-kitty-whisker right2"></div>
+                            <div class="hello-kitty-bow"></div>
+                            <div class="hello-kitty-computer">
+                                <div class="hello-kitty-screen"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Обучение информатике с Ангелиной</h1>
+                        <p>Студентка 5 курса, 501 группы</p>
+                    </div>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="index.html#lessons"><i class="fas fa-book-open"></i> Уроки</a></li>
+                    <li><a href="index.html#practice"><i class="fas fa-code"></i> Практика</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> О проекте</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Заголовок курса -->
+    <section class="course-header">
+        <div class="container">
+            <span class="course-tag">Язык программирования</span>
+            <h1>Основы программирования на Python</h1>
+            <p>Изучите один из самых популярных и простых языков программирования</p>
+            <span class="python-logo">Python 3</span>
+        </div>
+    </section>
+
+    <!-- Содержание курса -->
+    <main class="container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Вернуться на главную
+        </a>
+
+        <div class="course-content">
+            <h2>Что такое Python?</h2>
+            <p>Python — это высокоуровневый язык программирования общего назначения с простым и понятным синтаксисом. Он широко используется в веб-разработке, data science, машинном обучении, автоматизации и многих других областях.</p>
+
+            <div class="info-block">
+                <h4>🎯 Почему стоит изучать Python?</h4>
+                <ul>
+                    <li><strong>Простой синтаксис</strong> — легко читать и писать код</li>
+                    <li><strong>Большое сообщество</strong> — множество библиотек и ресурсов</li>
+                    <li><strong>Универсальность</strong> — подходит для разных задач</li>
+                    <li><strong>Востребованность</strong> — высокий спрос на рынке труда</li>
+                    <li><strong>Бесплатный</strong> — открытый исходный код</li>
+                </ul>
+            </div>
+
+            <h2>Первая программа на Python</h2>
+            <p>Традиционно первой программой при изучении любого языка программирования является вывод текста "Hello, World!".</p>
+
+            <div class="code-example">
+                <h3>Пример: Hello, World!</h3>
+                <pre><code><span class="code-comment"># Это комментарий - Python его игнорирует</span>
+<span class="code-comment"># Выводим текст на экран</span>
+<span class="code-function">print</span>(<span class="code-string">"Hello, World!"</span>)
+<span class="code-function">print</span>(<span class="code-string">"Добро пожаловать в мир Python!"</span>)</code></pre>
+            </div>
+
+            <h2>Переменные и типы данных</h2>
+            <p>Переменные — это контейнеры для хранения данных. В Python не нужно явно объявлять тип переменной.</p>
+
+            <div class="code-example">
+                <h3>Пример: Работа с переменными</h3>
+                <pre><code><span class="code-comment"># Строки (string)</span>
+name = <span class="code-string">"Ангелина"</span>
+university = <span class="code-string">"Студентка 5 курса"</span>
+
+<span class="code-comment"># Числа (integers и floats)</span>
+age = <span class="code-number">21</span>
+average_score = <span class="code-number">4.8</span>
+
+<span class="code-comment"># Логические значения (boolean)</span>
+is_student = <span class="code-keyword">True</span>
+is_teacher = <span class="code-keyword">False</span>
+
+<span class="code-comment"># Списки (list)</span>
+subjects = [<span class="code-string">"Информатика"</span>, <span class="code-string">"Математика"</span>, <span class="code-string">"Программирование"</span>]
+
+<span class="code-comment"># Выводим значения переменных</span>
+<span class="code-function">print</span>(<span class="code-string">"Имя:"</span>, name)
+<span class="code-function">print</span>(<span class="code-string">"Возраст:"</span>, age)
+<span class="code-function">print</span>(<span class="code-string">"Предметы:"</span>, subjects)</code></pre>
+            </div>
+
+            <h2>Условные операторы</h2>
+            <p>Условные операторы позволяют выполнять разные действия в зависимости от условий.</p>
+
+            <div class="code-example">
+                <h3>Пример: if-elif-else</h3>
+                <pre><code>grade = <span class="code-number">85</span>
+
+<span class="code-keyword">if</span> grade >= <span class="code-number">90</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Отлично! Оценка A"</span>)
+<span class="code-keyword">elif</span> grade >= <span class="code-number">80</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Хорошо! Оценка B"</span>)
+<span class="code-keyword">elif</span> grade >= <span class="code-number">70</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Удовлетворительно! Оценка C"</span>)
+<span class="code-keyword">else</span>:
+    <span class="code-function">print</span>(<span class="code-string">"Нужно подтянуть знания! Оценка D"</span>)</code></pre>
+            </div>
+
+            <h2>Циклы</h2>
+            <p>Циклы позволяют повторять выполнение блока кода несколько раз.</p>
+
+            <div class="code-example">
+                <h3>Пример: Циклы for и while</h3>
+                <pre><code><span class="code-comment"># Цикл for для перебора элементов списка</span>
+fruits = [<span class="code-string">"яблоко"</span>, <span class="code-string">"банан"</span>, <span class="code-string">"апельсин"</span>, <span class="code-string">"киви"</span>]
+
+<span class="code-function">print</span>(<span class="code-string">"Список фруктов:"</span>)
+<span class="code-keyword">for</span> fruit <span class="code-keyword">in</span> fruits:
+    <span class="code-function">print</span>(<span class="code-string">"-"</span>, fruit)
+
+<span class="code-comment"># Цикл for с range</span>
+<span class="code-function">print</span>(<span class="code-string">"\nЧисла от 1 до 5:"</span>)
+<span class="code-keyword">for</span> i <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-number">1</span>, <span class="code-number">6</span>):
+    <span class="code-function">print</span>(i)
+
+<span class="code-comment"># Цикл while</span>
+<span class="code-function">print</span>(<span class="code-string">"\nОбратный отсчет:"</span>)
+count = <span class="code-number">5</span>
+<span class="code-keyword">while</span> count > <span class="code-number">0</span>:
+    <span class="code-function">print</span>(count)
+    count -= <span class="code-number">1</span>
+<span class="code-function">print</span>(<span class="code-string">"Старт!"</span>)</code></pre>
+            </div>
+
+            <h2>Функции</h2>
+            <p>Функции позволяют группировать код в повторно используемые блоки.</p>
+
+            <div class="code-example">
+                <h3>Пример: Создание и вызов функций</h3>
+                <pre><code><span class="code-comment"># Простая функция без параметров</span>
+<span class="code-keyword">def</span> <span class="code-function">greet</span>():
+    <span class="code-function">print</span>(<span class="code-string">"Привет! Добро пожаловать на курс Python!"</span>)
+
+<span class="code-comment"># Функция с параметрами</span>
+<span class="code-keyword">def</span> <span class="code-function">personal_greet</span>(name, course):
+    <span class="code-function">print</span>(<span class="code-string">f"Привет, {name}! Вы записаны на курс: {course}"</span>)
+
+<span class="code-comment"># Функция, возвращающая значение</span>
+<span class="code-keyword">def</span> <span class="code-function">calculate_average</span>(numbers):
+    <span class="code-keyword">if</span> <span class="code-keyword">not</span> numbers:
+        <span class="code-keyword">return</span> <span class="code-number">0</span>
+    <span class="code-keyword">return</span> <span class="code-function">sum</span>(numbers) / <span class="code-function">len</span>(numbers)
+
+<span class="code-comment"># Вызов функций</span>
+greet()
+personal_greet(<span class="code-string">"Анна"</span>, <span class="code-string">"Основы Python"</span>)
+
+grades = [<span class="code-number">85</span>, <span class="code-number">92</span>, <span class="code-number">78</span>, <span class="code-number">90</span>, <span class="code-number">88</span>]
+average = calculate_average(grades)
+<span class="code-function">print</span>(<span class="code-string">f"Средний балл: {average:.2f}"</span>)</code></pre>
+            </div>
+
+            <h2>Работа со списками</h2>
+            <p>Списки — одна из самых полезных структур данных в Python.</p>
+
+            <div class="code-example">
+                <h3>Пример: Операции со списками</h3>
+                <pre><code><span class="code-comment"># Создание списка</span>
+students = [<span class="code-string">"Анна"</span>, <span class="code-string">"Борис"</span>, <span class="code-string">"Виктория"</span>, <span class="code-string">"Григорий"</span>]
+grades = [<span class="code-number">85</span>, <span class="code-number">92</span>, <span class="code-number">78</span>, <span class="code-number">90</span>]
+
+<span class="code-comment"># Основные операции</span>
+<span class="code-function">print</span>(<span class="code-string">"Первый студент:"</span>, students[<span class="code-number">0</span>])      <span class="code-comment"># Доступ по индексу</span>
+<span class="code-function">print</span>(<span class="code-string">"Количество студентов:"</span>, <span class="code-function">len</span>(students))  <span class="code-comment"># Длина списка</span>
+
+<span class="code-comment"># Добавление элементов</span>
+students.append(<span class="code-string">"Дмитрий"</span>)      <span class="code-comment"># В конец списка</span>
+students.insert(<span class="code-number">2</span>, <span class="code-string">"Елена"</span>)     <span class="code-comment"># На конкретную позицию</span>
+
+<span class="code-comment"># Удаление элементов</span>
+removed_student = students.pop()  <span class="code-comment"># Удаляет последний элемент</span>
+students.remove(<span class="code-string">"Борис"</span>)         <span class="code-comment"># Удаляет конкретный элемент</span>
+
+<span class="code-comment"># Сортировка</span>
+students.sort()                   <span class="code-comment"># Сортировка по алфавиту</span>
+grades.sort(reverse=<span class="code-keyword">True</span>)        <span class="code-comment"># Сортировка по убыванию</span>
+
+<span class="code-comment"># Вывод результатов</span>
+<span class="code-function">print</span>(<span class="code-string">"\nОтсортированный список студентов:"</span>)
+<span class="code-keyword">for</span> student <span class="code-keyword">in</span> students:
+    <span class="code-function">print</span>(<span class="code-string">"-"</span>, student)</code></pre>
+            </div>
+
+            <h2>Словари</h2>
+            <p>Словари хранят данные в формате ключ-значение.</p>
+
+            <div class="code-example">
+                <h3>Пример: Работа со словарями</h3>
+                <pre><code><span class="code-comment"># Создание словаря с информацией о студенте</span>
+student = {
+    <span class="code-string">"имя"</span>: <span class="code-string">"Ангелина"</span>,
+    <span class="code-string">"возраст"</span>: <span class="code-number">21</span>,
+    <span class="code-string">"курс"</span>: <span class="code-number">5</span>,
+    <span class="code-string">"специальность"</span>: <span class="code-string">"Информатика"</span>,
+    <span class="code-string">"оценки"</span>: [<span class="code-number">85</span>, <span class="code-number">92</span>, <span class="code-number">88</span>, <span class="code-number">95</span>]
+}
+
+<span class="code-comment"># Доступ к значениям</span>
+<span class="code-function">print</span>(<span class="code-string">"Имя студента:"</span>, student[<span class="code-string">"имя"</span>])
+<span class="code-function">print</span>(<span class="code-string">"Специальность:"</span>, student.get(<span class="code-string">"специальность"</span>, <span class="code-string">"Не указана"</span>))
+
+<span class="code-comment"># Добавление и изменение элементов</span>
+student[<span class="code-string">"группа"</span>] = <span class="code-string">"501"</span>                <span class="code-comment"># Добавление нового ключа</span>
+student[<span class="code-string">"возраст"</span>] = <span class="code-number">22</span>                   <span class="code-comment"># Изменение значения</span>
+
+<span class="code-comment"># Перебор словаря</span>
+<span class="code-function">print</span>(<span class="code-string">"\nИнформация о студенте:"</span>)
+<span class="code-keyword">for</span> key, value <span class="code-keyword">in</span> student.items():
+    <span class="code-function">print</span>(<span class="code-string">f"{key}: {value}"</span>)</code></pre>
+            </div>
+
+            <h2>Практический проект: Калькулятор оценок</h2>
+            <p>Давайте создадим простую программу для расчета среднего балла студентов.</p>
+
+            <div class="code-example">
+                <h3>Пример: Программа калькулятор оценок</h3>
+                <pre><code><span class="code-keyword">def</span> <span class="code-function">calculate_grade_stats</span>(grades):
+    <span class="code-comment">"""Вычисляет статистику по оценкам"""</span>
+
+    <span class="code-keyword">if</span> <span class="code-keyword">not</span> grades:
+        <span class="code-keyword">return</span> <span class="code-keyword">None</span>
+
+    average = <span class="code-function">sum</span>(grades) / <span class="code-function">len</span>(grades)
+    highest = <span class="code-function">max</span>(grades)
+    lowest = <span class="code-function">min</span>(grades)
+
+    <span class="code-keyword">return</span> {
+        <span class="code-string">"average"</span>: average,
+        <span class="code-string">"highest"</span>: highest,
+        <span class="code-string">"lowest"</span>: lowest,
+        <span class="code-string">"count"</span>: <span class="code-function">len</span>(grades)
+    }
+
+<span class="code-keyword">def</span> <span class="code-function">main</span>():
+    <span class="code-comment">"""Основная функция программы"""</span>
+
+    <span class="code-function">print</span>(<span class="code-string">"=== Калькулятор оценок ==="</span>)
+    <span class="code-function">print</span>(<span class="code-string">"Введите оценки через пробел (например: 85 92 78 90)"</span>)
+
+    <span class="code-keyword">try</span>:
+        <span class="code-comment"># Получаем ввод от пользователя</span>
+        input_str = <span class="code-function">input</span>(<span class="code-string">"Ввод: "</span>)
+        grades = [<span class="code-function">float</span>(grade) <span class="code-keyword">for</span> grade <span class="code-keyword">in</span> input_str.split()]
+
+        <span class="code-comment"># Вычисляем статистику</span>
+        stats = calculate_grade_stats(grades)
+
+        <span class="code-keyword">if</span> stats:
+            <span class="code-function">print</span>(<span class="code-string">"\n=== Результаты ==="</span>)
+            <span class="code-function">print</span>(<span class="code-string">f"Количество оценок: {stats['count']}"</span>)
+            <span class="code-function">print</span>(<span class="code-string">f"Средний балл: {stats['average']:.2f}"</span>)
+            <span class="code-function">print</span>(<span class="code-string">f"Наивысшая оценка: {stats['highest']}"</span>)
+            <span class="code-function">print</span>(<span class="code-string">f"Наименьшая оценка: {stats['lowest']}"</span>)
+        <span class="code-keyword">else</span>:
+            <span class="code-function">print</span>(<span class="code-string">"Не введено ни одной оценки!"</span>)
+
+    <span class="code-keyword">except</span> ValueError:
+        <span class="code-function">print</span>(<span class="code-string">"Ошибка: пожалуйста, вводите только числа!"</span>)
+
+<span class="code-comment"># Запуск программы</span>
+<span class="code-keyword">if</span> __name__ == <span class="code-string">"__main__"</span>:
+    main()</code></pre>
+            </div>
+
+            <h2>Практические задания</h2>
+            <ol>
+                <li>Напишите программу, которая преобразует температуру из Цельсия в Фаренгейт</li>
+                <li>Создайте программу для проверки, является ли число простым</li>
+                <li>Напишите программу, которая находит факториал числа</li>
+                <li>Создайте простой калькулятор с операциями +, -, *, /</li>
+                <li>Напишите программу для игры "Угадай число"</li>
+            </ol>
+
+            <div class="info-block">
+                <h4>🚀 Дальнейшие шаги в изучении Python:</h4>
+                <ul>
+                    <li>Работа с файлами (чтение/запись)</li>
+                    <li>Обработка исключений (try-except)</li>
+                    <li>Работа с модулями и библиотеками</li>
+                    <li>Основы ООП (классы и объекты)</li>
+                    <li>Работа с базами данных</li>
+                    <li>Создание веб-приложений (Flask/Django)</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="course-algorithms.html" class="btn" style="background-color: #ff99cc;">← Предыдущий курс: Алгоритмы</a>
+                <a href="course-databases.html" class="btn" style="background-color: #ff99cc;">Следующий курс: Базы данных →</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Обучение информатике с Ангелиной</h3>
+                    <p>Проект создан для того, чтобы сделать изучение информатики доступным и интересным для всех желающих.</p>
+
+                    <div class="creator-info">
+                        <p>Создатель проекта: <strong>Осадчая Ангелина Олеговна</strong></p>
+                        <p>Студентка 5 курса, 501 группы</p>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Главная</a></li>
+                        <li><a href="course-algorithms.html"><i class="fas fa-chevron-right"></i> Алгоритмы</a></li>
+                        <li><a href="course-python.html"><i class="fas fa-chevron-right"></i> Python</a></li>
+                        <li><a href="course-databases.html"><i class="fas fa-chevron-right"></i> Базы данных</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> О проекте</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Полезные ресурсы по Python</h3>
+                    <ul>
+                        <li><a href="https://python.org" target="_blank"><i class="fas fa-external-link-alt"></i> Официальный сайт Python</a></li>
+                        <li><a href="https://docs.python.org" target="_blank"><i class="fas fa-book"></i> Документация Python</a></li>
+                        <li><a href="https://pythontutor.com" target="_blank"><i class="fas fa-graduation-cap"></i> Python Tutor</a></li>
+                        <li><a href="https://leetcode.com" target="_blank"><i class="fas fa-code"></i> Задачи на LeetCode</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Обучение информатике с Ангелиной. Все права защищены.</p>
+                <p>Материалы сайта можно использовать для обучения с указанием источника.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Подсветка активной страницы в навигации
+        const currentPage = window.location.pathname.split('/').pop() || 'course-python.html';
+        const navLinks = document.querySelectorAll('nav a');
+
+        navLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage) {
+                link.classList.add('current-page');
+            }
+        });
+
+        // Анимация для логотипа Hello Kitty
+        const helloKitty = document.querySelector('.hello-kitty');
+        if(helloKitty) {
+            helloKitty.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.transition = 'transform 0.3s';
+            });
+
+            helloKitty.addEventListener('mouseout', function() {
+                this.style.transform = 'scale(1)';
+            });
+        }
+    </script>
+</body>
+</html>

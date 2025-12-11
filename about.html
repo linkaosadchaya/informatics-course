@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О проекте - Обучение информатике с Ангелиной</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            background-image: linear-gradient(to bottom, #f9f0ff 0%, #f5f7fa 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header стили */
+        header {
+            background: linear-gradient(135deg, #ff66b2 0%, #ff99cc 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .logo-img:hover {
+            transform: rotate(10deg);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            color: #ffe6f2;
+            margin-top: 3px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a:hover {
+            color: #ff66b2;
+            background-color: white;
+            transform: translateY(-2px);
+        }
+
+        nav ul li a i {
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff66b2;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 102, 178, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #ff3385;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 102, 178, 0.4);
+        }
+
+        /* Hello Kitty логотип */
+        .hello-kitty {
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+
+        .hello-kitty-head {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .hello-kitty-ear {
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .hello-kitty-ear.left {
+            top: 0;
+            left: 5px;
+        }
+
+        .hello-kitty-ear.right {
+            top: 0;
+            right: 5px;
+        }
+
+        .hello-kitty-eye {
+            width: 8px;
+            height: 8px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+        }
+
+        .hello-kitty-eye.left {
+            left: 10px;
+        }
+
+        .hello-kitty-eye.right {
+            right: 10px;
+        }
+
+        .hello-kitty-nose {
+            width: 6px;
+            height: 6px;
+            background-color: #ff66b2;
+            border-radius: 50%;
+            position: absolute;
+            top: 25px;
+            left: 22px;
+        }
+
+        .hello-kitty-whisker {
+            width: 10px;
+            height: 2px;
+            background-color: black;
+            position: absolute;
+            top: 23px;
+        }
+
+        .hello-kitty-whisker.left1 {
+            left: 5px;
+            transform: rotate(-20deg);
+        }
+
+        .hello-kitty-whisker.left2 {
+            left: 5px;
+            transform: rotate(20deg);
+            top: 27px;
+        }
+
+        .hello-kitty-whisker.right1 {
+            right: 5px;
+            transform: rotate(20deg);
+        }
+
+        .hello-kitty-whisker.right2 {
+            right: 5px;
+            transform: rotate(-20deg);
+            top: 27px;
+        }
+
+        .hello-kitty-bow {
+            width: 20px;
+            height: 15px;
+            background-color: #ff66b2;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: rotate(30deg);
+        }
+
+        .hello-kitty-computer {
+            width: 30px;
+            height: 20px;
+            background-color: #333;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -5px;
+            left: 10px;
+        }
+
+        .hello-kitty-screen {
+            width: 20px;
+            height: 12px;
+            background-color: #4cc9f0;
+            border-radius: 3px;
+            position: absolute;
+            top: 4px;
+            left: 5px;
+        }
+
+        /* Страница "О проекте" */
+        .about-page {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-hero {
+            background: linear-gradient(135deg, #ff66b2 0%, #ff99cc 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
+        }
+
+        .about-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #ffe6f2;
+        }
+
+        .about-content {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(255, 102, 178, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .about-section {
+            margin-bottom: 40px;
+        }
+
+        .about-section h2 {
+            color: #ff66b2;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffe6f2;
+        }
+
+        .about-author {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: #ffe6f2;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+
+        .author-avatar {
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .author-info h3 {
+            color: #ff66b2;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .author-info p {
+            margin-bottom: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #ff66b2;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: #ff3385;
+            transform: translateY(-5px);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #ffe6f2;
+            color: #ff66b2;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            background-color: #ff66b2;
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, #ff66b2 0%, #ff99cc 100%);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ffe6f2;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-column ul li a i {
+            font-size: 0.8rem;
+        }
+
+        .creator-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: #ffe6f2;
+        }
+
+        .creator-info strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffe6f2;
+            font-size: 0.9rem;
+        }
+
+        /* Индикатор текущей страницы */
+        .current-page {
+            background-color: white !important;
+            color: #ff66b2 !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 8px;
+            }
+
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-author {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-text h1 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-hero {
+                padding: 60px 0;
+            }
+
+            .about-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .about-content {
+                padding: 25px;
+            }
+
+            .logo {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+
+            nav ul li a {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 15px;">
+                    <div class="logo-img">
+                        <!-- Hello Kitty логотип -->
+                        <div class="hello-kitty">
+                            <div class="hello-kitty-ear left"></div>
+                            <div class="hello-kitty-ear right"></div>
+                            <div class="hello-kitty-head"></div>
+                            <div class="hello-kitty-eye left"></div>
+                            <div class="hello-kitty-eye right"></div>
+                            <div class="hello-kitty-nose"></div>
+                            <div class="hello-kitty-whisker left1"></div>
+                            <div class="hello-kitty-whisker left2"></div>
+                            <div class="hello-kitty-whisker right1"></div>
+                            <div class="hello-kitty-whisker right2"></div>
+                            <div class="hello-kitty-bow"></div>
+                            <div class="hello-kitty-computer">
+                                <div class="hello-kitty-screen"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Обучение информатике с Ангелиной</h1>
+                        <p>Студентка 5 курса, 501 группы</p>
+                    </div>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="index.html#lessons"><i class="fas fa-book-open"></i> Уроки</a></li>
+                    <li><a href="index.html#practice"><i class="fas fa-code"></i> Практика</a></li>
+                    <li><a href="about.html" class="current-page"><i class="fas fa-info-circle"></i> О проекте</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой секция -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>О проекте</h1>
+            <p>Узнайте больше о создателе и миссии этого образовательного проекта</p>
+        </div>
+    </section>
+
+    <!-- Основное содержимое -->
+    <main class="container about-page">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Вернуться на главную
+        </a>
+
+        <div class="about-content">
+            <div class="about-section">
+                <h2>Миссия проекта</h2>
+                <p>Цель этого проекта — сделать изучение информатики доступным, понятным и интересным для всех желающих, независимо от их начального уровня подготовки.</p>
+                <p>В современном мире цифровые технологии пронизывают все сферы жизни, и базовые знания в области информатики становятся необходимыми не только для IT-специалистов, но и для представителей других профессий.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Что вы найдете на сайте</h2>
+                <ul>
+                    <li><strong>Понятные уроки</strong> по основам информатики и программирования</li>
+                    <li><strong>Практические примеры</strong> с реальным кодом на Python</li>
+                    <li><strong>Объяснение алгоритмов</strong> и структур данных</li>
+                    <li><strong>Интерактивные задания</strong> для закрепления материала</li>
+                    <li><strong>Современный подход</strong> к обучению с акцентом на практику</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2>Для кого этот проект</h2>
+                <p>Этот сайт будет полезен:</p>
+                <ul>
+                    <li><strong>Школьникам</strong>, изучающим информатику</li>
+                    <li><strong>Студентам</strong> технических и нетехнических специальностей</li>
+                    <li><strong>Начинающим программистам</strong>, которые хотят укрепить базовые знания</li>
+                    <li><strong>Всем интересующимся</strong> современными технологиями</li>
+                    <li><strong>Учителям информатики</strong> в поиске дополнительных материалов</li>
+                </ul>
+            </div>
+
+            <div class="about-author">
+                <div class="author-avatar">
+                    <div style="font-size: 3rem; color: #ff66b2;">👩‍💻</div>
+                </div>
+                <div class="author-info">
+                    <h3>Осадчая Ангелина Олеговна</h3>
+                    <p><strong>Студентка 5 курса, 501 группы</strong></p>
+                    <p>Создатель и автор проекта "Обучение информатике с Ангелиной".</p>
+                    <p>Увлекаюсь программированием, веб-разработкой и созданием образовательного контента. Верю, что информатика должна быть доступной и интересной для всех.</p>
+
+                    <div class="social-icons">
+                        <a href="https://vk.com/osadochekkk" target="_blank" title="ВКонтакте">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="https://t.me/osado4ek" target="_blank" title="Телеграм">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Контакты и обратная связь</h2>
+                <p>Если у вас есть вопросы, предложения или вы хотите сотрудничать, пожалуйста, свяжитесь со мной через социальные сети или напишите на электронную почту.</p>
+                <p>Ваши отзывы и пожелания помогут сделать этот проект еще лучше!</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Обучение информатике с Ангелиной</h3>
+                    <p>Проект создан для того, чтобы сделать изучение информатики доступным и интересным для всех желающих.</p>
+
+                    <div class="creator-info">
+                        <p>Создатель проекта: <strong>Осадчая Ангелина Олеговна</strong></p>
+                        <p>Студентка 5 курса, 501 группы</p>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Главная</a></li>
+                        <li><a href="course-algorithms.html"><i class="fas fa-chevron-right"></i> Алгоритмы</a></li>
+                        <li><a href="course-python.html"><i class="fas fa-chevron-right"></i> Python</a></li>
+                        <li><a href="course-databases.html"><i class="fas fa-chevron-right"></i> Базы данных</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> О проекте</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="https://vk.com/osadochekkk" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a></li>
+                        <li><a href="https://t.me/osado4ek" target="_blank"><i class="fab fa-telegram"></i> Телеграм</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> Электронная почта</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Обучение информатике с Ангелиной. Все права защищены.</p>
+                <p>Материалы сайта можно использовать для обучения с указанием источника.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Подсветка активной страницы в навигации
+        const currentPage = window.location.pathname.split('/').pop() || 'about.html';
+        const navLinks = document.querySelectorAll('nav a');
+
+        navLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage) {
+                link.classList.add('current-page');
+            }
+        });
+
+        // Анимация для логотипа Hello Kitty
+        const helloKitty = document.querySelector('.hello-kitty');
+        if(helloKitty) {
+            helloKitty.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.transition = 'transform 0.3s';
+            });
+
+            helloKitty.addEventListener('mouseout', function() {
+                this.style.transform = 'scale(1)';
+            });
+        }
+    </script>
+</body>
+</html>
